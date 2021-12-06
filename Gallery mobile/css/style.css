@@ -1,0 +1,185 @@
+/* font */
+@font-face {
+   font-family: 'tg';
+   src: url('../fonts/downcome-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+
+/* style utama */
+body {
+  font: 12px/24px 'tg', arial, sans-serif;
+ /* background-color: #ddd;*/
+  background-image: url(../img/bg/tokyo-ghoul.jpg);
+  background-repeat: no-repeat;
+}
+
+h1 {
+  font-size: 60px;
+  margin: 50px 0;
+  text-align: center;
+  text-shadow: 1px 1px 1px white;
+  color: red;
+}
+
+.container {
+  background-color: white;
+  margin: auto;
+  width: 300px;
+  padding: 15px;
+  box-shadow: 0 0 4px 4px rgba(0,0,0,.4);
+  border-radius: 10px;
+}
+
+.gallery li {
+  width: 110px;
+  height: 110px;
+  /*overflow: hidden;*/
+  border: 5px solid /*#666*/ red;
+  float: left;
+  margin: 10px 15px;
+  position: relative;
+  box-shadow: 0 0 2px 2px rgba(0,0,0,.5);
+}
+
+.gallery li,
+.gallery li a img,
+.gallery li span {
+  border-radius: 50%;
+}
+
+.gallery li span {
+  display: block;
+  background-color: rgba(200,200,200,.5);
+  width: 110px;
+  height: 110px;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  line-height: 120px;
+  color: /*#333*/ red;
+  text-shadow: 1px 1px 1px #f01717ca;
+  opacity: 0;
+  transition: .3s;
+  transform: scale(0) rotate(0);
+}
+.gallery li a:hover span {
+  opacity: 1;
+  transform: scale(1) rotate(360deg);
+}
+
+a { 
+  -webkit-tap-highlight-color: transparent;
+  color: transparent;
+}
+
+.clear { clear: both;}
+
+
+/* Overlay */
+.overlay {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: fixed;
+  background-color: rgba(0,0,0,0);
+  top: 0;
+  bottom: 0;
+  z-index: 9999;
+  transition: .8s;
+  text-align: center;
+  padding: 100px 0px;
+}
+
+.overlay:target {
+  width: auto;
+  height: auto;
+  right: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.overlay img {
+ max-height: 100%;
+ box-shadow: 3px 3px 5px rgba(0,0,0,.5);
+}
+
+.overlay:target img {
+ animation: fade 1s;
+}
+
+.overlay .close {
+  font-family: arial, sans-serif;
+  font-weight: bold;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  margin-left: -28px;
+  color: white;
+  text-decoration: none;
+  background-color: black;
+  border: 1px solid white;
+  line-height: 14px;
+  padding: 5px;
+  opacity: 0;
+}
+
+.overlay:target .close {
+ animation: slideDownFade .5s .5s forwards;
+}
+
+
+/* navigasi */
+.overlay:target .next,
+.overlay:target .prev {
+  animation: fade .5s .5s forwards;
+}
+
+.next, .prev {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 40%;
+  opacity: 0;
+}
+
+.prev {
+  margin-left: -50px;
+}
+.next {
+  margin-left: 10px;
+}
+
+
+/* animasi */
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/*
+@keyframes zoomFade {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+*/
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    margin-top: -20px;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
